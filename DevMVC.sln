@@ -8,9 +8,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartyInvites", "PartyInvites\PartyInvites.csproj", "{FE08675D-DD28-4861-B403-72D47DC9CA80}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{FACAA6ED-4570-4915-9FEF-AB026313F437}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\Documents\Visual Studio 2015\Settings\Exported-2016-05-12.vssettings = ..\..\..\Documents\Visual Studio 2015\Settings\Exported-2016-05-12.vssettings
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
