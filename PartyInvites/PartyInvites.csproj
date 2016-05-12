@@ -89,6 +89,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Exported-2016-05-12 - Copy.vssettings" />
     <Content Include="App_Data\Exported-2016-05-12.vssettings" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
