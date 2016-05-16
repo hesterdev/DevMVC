@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using LanguageFeatures.Models;
+using System.Text;
+using System.Threading.Tasks;
+using System.Net.Http;
 
 namespace LanguageFeatures.Controllers
 {
@@ -110,13 +113,28 @@ namespace LanguageFeatures.Controllers
             //   {
             //       return prod.Category == "Watersports";
             //   };
+
+            #region 写法一
             Func<Product, bool> categoryFilter = prod => prod.Category == "Soccer";
 
 
-            foreach(Product prod in products.Filter(categoryFilter))
+            //foreach(Product prod in products.Filter(categoryFilter))
+            //{
+            //    total += prod.Price;
+            //}
+            #endregion
+
+            #region 省略lambda变量定义
+            //foreach (var prod in products.Filter(prod => prod.Category == "Soccer"))
+            //{
+            //    total += prod.Price;
+            //}
+
+            foreach (var prod in products.Filter(prod => prod.Category == "Soccer" || prod.Price > 20))
             {
                 total += prod.Price;
             }
+            #endregion
 
             //foreach (Product prod in products.FilterByCategory("Soccer"))
             //{
@@ -124,6 +142,104 @@ namespace LanguageFeatures.Controllers
             //}
             return View("Result", (object)String.Format("Total: {0}", total));
 
+        }
+        public ViewResult CreateAnonArray()
+        {
+            var tmp = new { Name = "MVC", Category = "Pattern" };
+            var oddsAndEnds = new[]
+            {
+                new {Name="MVC",Category="Pattern" },
+                new {Name="Hat",Category="Clothing",},
+                new {Name="Apple",Category="Fruit" },
+            };
+            StringBuilder result = new StringBuilder();
+            foreach (var item in oddsAndEnds)
+            {
+                result.Append(item.Name).Append(" ");
+            }
+            return View("Result", (object)result.ToString());
+        }
+        public ViewResult FindProducts()
+        {
+            Product[] products =
+            {
+                 new Product {Name="Kayak",Category="Watersports",Price=275M },
+                 new Product {Name="Lifejacket",Category="Watersports",Price=48.95M },
+                 new Product {Name="Soccer ball",Category="Soccer",Price=19.50M },
+                 new Product {Name="Corner flag",Category="Soccer",Price=34.95M }
+            };
+            products[3] = new Product { Name = "Stadium", Price = 79600M };
+            /*
+            // define the array to hold the results
+            Product[] foundProducts = new Product[3];
+            // Sort the contents of the array
+            Array.Sort(products, (item1, item2) =>
+            {
+                return Comparer<decimal>.Default.Compare(item1.Price, item2.Price);
+            });
+            // get the first three items in the array as the results 
+            Array.Copy(products, foundProducts, 3);
+            */
+
+            //Use LINQ to query data
+            //var foundProducts = from match in products
+            //                    orderby match.Price descending
+            //                    select new { match.Name, match.Price };
+
+            //// create the result
+            //StringBuilder result = new StringBuilder();
+            //int cnt = 0;
+            //foreach (var p in foundProducts)
+            //{
+            //    if (cnt++ < 3)
+            //        result.AppendFormat("Price: {0} ", p.Price);
+            //}
+
+
+
+
+            var fountProducts = products.OrderByDescending(e => e.Price).Take(3).Select(e => new { e.Name, e.Price });
+            StringBuilder result = new StringBuilder();
+            foreach(var p in fountProducts)
+            {
+                result.AppendFormat("Price: {0} ", p.Price);
+            }
+            return View("Result", (object)result.ToString());
+
+        }
+
+        public ViewResult SumProducts()
+        {
+            Product[] products =
+              {
+                 new Product {Name="Kayak",Category="Watersports",Price=275M },
+                 new Product {Name="Lifejacket",Category="Watersports",Price=48.95M },
+                 new Product {Name="Soccer ball",Category="Soccer",Price=19.50M },
+                 new Product {Name="Corner flag",Category="Soccer",Price=34.95M }
+            };
+            var results = products.Sum(e => e.Price);
+            products[2] = new Product { Name = "Stadium", Price = 79500M };
+            return View("Result", (object)String.Format("Sum: {0:c}", results));
+        }
+        /*
+        public static Task<long?> GetPageLength()
+        {
+            HttpClient client = new HttpClient();
+            var httpTask=client.GetAsync("http://apress.com");
+
+            // we could do other things here while we are waiting for the HTTP request to complete
+            return httpTask.ContinueWith((Task<HttpResponseMessage> antecedent) =>
+            {
+                return antecedent.Result.Content.Headers.ContentLength;
+            });
+        }
+        */
+        public async static Task<long?> GetPageLength()
+        {
+            HttpClient client = new HttpClient();
+            var httpMessage = await client.GetAsync("http://apress.com");
+            // we could do other things here while we are waiting for the HTTP request to complete
+            return httpMessage.Content.Headers.ContentLength;
         }
     }
 }

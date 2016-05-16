@@ -15,6 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter 04", "Chapter 04", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageFeatures", "LanguageFeatures\LanguageFeatures.csproj", "{AAD37E29-13CE-4A70-AF19-845088589775}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter 05", "Chapter 05", "{2A76E2F1-8500-425E-BCE2-E59F5368CEBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Razor", "Razor\Razor.csproj", "{550EC5B6-458E-4122-A96C-1D1C09AD6D7D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +33,10 @@ Global
 		{AAD37E29-13CE-4A70-AF19-845088589775}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAD37E29-13CE-4A70-AF19-845088589775}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAD37E29-13CE-4A70-AF19-845088589775}.Release|Any CPU.Build.0 = Release|Any CPU
+		{550EC5B6-458E-4122-A96C-1D1C09AD6D7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{550EC5B6-458E-4122-A96C-1D1C09AD6D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{550EC5B6-458E-4122-A96C-1D1C09AD6D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{550EC5B6-458E-4122-A96C-1D1C09AD6D7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,5 +44,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{FE08675D-DD28-4861-B403-72D47DC9CA80} = {9E99660F-4749-4294-8CE3-13B2DB3C9FB1}
 		{AAD37E29-13CE-4A70-AF19-845088589775} = {EF1016A6-72E0-46B4-9AE5-50E31908EA0E}
+		{550EC5B6-458E-4122-A96C-1D1C09AD6D7D} = {2A76E2F1-8500-425E-BCE2-E59F5368CEBA}
 	EndGlobalSection
 EndGlobal
