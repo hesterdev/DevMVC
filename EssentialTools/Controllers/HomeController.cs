@@ -19,11 +19,11 @@ namespace EssentialTools.Controllers
         };
 
         private IValueCalculator calc;
-        public HomeController(IValueCalculator calcParam)
+        public HomeController(IValueCalculator calcParam,IValueCalculator calc2,IValueCalculator calc3)
         {
             calc = calcParam;
         }
-
+        
         // GET: Home
         public ActionResult Index()
         {
