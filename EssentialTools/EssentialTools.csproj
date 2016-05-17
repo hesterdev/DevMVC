@@ -9,12 +9,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{550EC5B6-458E-4122-A96C-1D1C09AD6D7D}</ProjectGuid>
+    <ProjectGuid>{4C0CB932-DE53-472E-986F-B9458C347D54}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Razor</RootNamespace>
-    <AssemblyName>Razor</AssemblyName>
+    <RootNamespace>EssentialTools</RootNamespace>
+    <AssemblyName>EssentialTools</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -115,18 +115,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Models\Discount.cs" />
+    <Compile Include="Models\FlexibleDiscountHelper.cs" />
+    <Compile Include="Models\IValueCalculator.cs" />
+    <Compile Include="Models\LinqValueCalculator.cs" />
+    <Compile Include="Models\MinumumDiscountHelper.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\_BasicLayout.cshtml" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\NameAndPrice.cshtml" />
-    <Content Include="Views\Home\DemoExpression.cshtml" />
-    <Content Include="Views\Home\DemoArray.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -150,9 +152,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>54680</DevelopmentServerPort>
+          <DevelopmentServerPort>50936</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:54680/</IISUrl>
+          <IISUrl>http://localhost:50936/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
